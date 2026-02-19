@@ -11,6 +11,7 @@
 - There must be a **record ID** column (unique for each record).
 
 Example input format:
+
 ![image_0_Image23.png](images/image_0_Image23.png)
 
 ---
