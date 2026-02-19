@@ -17,6 +17,7 @@ of CROW.
 - Additional dependencies listed in `requirements.txt`
 - **Optional**: An [IDE][ide] (e.g. Spyder, Visual Studio (VS) Code, PyCharm
   etc.)
+- The data to be matched in csv format. Help with preparing the pairwise csv can be found in part 7 of: version1_tkinter/docs/Instructions_Clerical_Coordinators_pairwise. Help with preparing the clusters csv can be found in: version1_tkinter/docs/Cluster_Version_Instructions
 
 > [!NOTE]
 >
@@ -81,6 +82,10 @@ as a 'quickstart' guide.
 Before you begin, you will need to choose between the clusters and pairwise
 versions of CROW1. Your choice will depend on the format of the data that you
 will be clerically reviewing.
+
+CROW_pairwise should be used when making a simple match or non-match decision between 2 records.
+
+CROW_clusters should be used when you have a group of records (these can be from a single or multiple data sources). This is useful when resolving conflicting links.
 
 > [!CAUTION]
 >
