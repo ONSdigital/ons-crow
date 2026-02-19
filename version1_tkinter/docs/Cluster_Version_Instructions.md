@@ -11,7 +11,7 @@
 - There must be a **record ID** column (unique for each record).
 
 Example input format:
-![image_0_Image23.png](ons-crow/version1_tkinter/docs/images/image_0_Image23.png)
+![image_0_Image23.png](images/image_0_Image23.png)
 
 ---
 ## Setting Up the Config File (for project leads)
