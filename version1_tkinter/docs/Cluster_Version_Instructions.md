@@ -6,13 +6,13 @@
 ---
 ## Input File Requirements
 The requirements for the files that you wish to clerically review are as follows;
-- • The files must be CSV files. 
-- • They must be ‘long’ files. There must be one row per record, containing 
+- The files must be CSV files. 
+- They must be ‘long’ files. There must be one row per record, containing 
  identifiable variables that are to be presented to clerical matchers for review.
  Clusters will contain multiple rows. See below for an example
-- • There must be a column that represents cluster ID. These ID’s can be any 
+- There must be a column that represents cluster ID. These ID’s can be any 
 random string, so long as they are unique to each cluster. 
-- • There must be a record ID column. This must be unique for each record. 
+- There must be a record ID column. This must be unique for each record. 
 
 Example ‘long’ file data format to be input to CROW:
 
@@ -73,6 +73,7 @@ records they wish to match, followed by clicking the ‘Match’ button. There c
 multiple matches in a given cluster. Once all matches are exhausted, or the “No 
 more matches” button is clicked, CROW will move on to the next cluster for 
 resolution.
+
 If users wish to add a custom comment, or a pre-determined comment about records 
 in this cluster, a comment can be entered in the comment box (or selected from the 
 drop-down tool) before a matching decision is made.
@@ -93,6 +94,5 @@ If there are no matches to a given record ‘No Matches In Cluster’ is printed
 ‘Match’ column. 
 To get your outputs in a pairwise linked version (see below) run the
 CROW_output_updater.py script.
-```
 
 ![image_3_Image35.png](images/image_3_Image35.png)
