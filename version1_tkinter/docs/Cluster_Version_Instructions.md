@@ -28,27 +28,32 @@ Specify the cluster ID column.
 
 ### `[record_id]`
 Specify the record ID column.
-![image_1_Image26.png](ons-crow/version1_tkinter/docs/images/image_1_Image26.png)
+
+![image_1_Image26.png](images/image_1_Image26.png)
 
 ---
 ## Custom Settings
 - **commentbox** toggle
 - **comment_values** dropdown examples
-![image_1_Image27.png](ons-crow/version1_tkinter/docs/images/image_1_Image27.png)
+
+![image_1_Image27.png](images/image_1_Image27.png)
 
 ---
 ## Using the Cluster Review Version
 Run the Python editor.
-![image_1_Image28.png](ons-crow/version1_tkinter/docs/images/image_1_Image28.png)
+
+![image_1_Image28.png](images/image_1_Image28.png)
 
 After selecting a file:
-![image_2_Image31.png](ons-crow/version1_tkinter/docs/images/image_2_Image31.png)
-![image_2_Image32.png](ons-crow/version1_tkinter/docs/images/image_2_Image32.png)
+
+![image_2_Image31.png](images/image_2_Image31.png)
+![image_2_Image32.png](images/image_2_Image32.png)
 
 ---
 ## The Output
 A Match column is appended.
-![image_3_Image35.png](ons-crow/version1_tkinter/docs/images/image_3_Image35.png)
+
+![image_3_Image35.png](images/image_3_Image35.png)
 
 To produce pairwise format, run:
 ```
