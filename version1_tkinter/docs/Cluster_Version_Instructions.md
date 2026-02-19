@@ -47,15 +47,15 @@ Run the Python editor.
 After selecting a file:
 
 ![image_2_Image31.png](images/image_2_Image31.png)
-![image_2_Image32.png](images/image_2_Image32.png)
 
 ---
 ## The Output
 A Match column is appended.
 
-![image_3_Image35.png](images/image_3_Image35.png)
+![image_2_Image32.png](images/image_2_Image32.png)
 
 To produce pairwise format, run:
 ```
 CROW_output_updater.py
 ```
+![image_3_Image35.png](images/image_3_Image35.png)
