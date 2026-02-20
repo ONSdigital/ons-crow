@@ -87,9 +87,12 @@ Before you begin, you will need to choose between the clusters and pairwise
 versions of CROW1. Your choice will depend on the format of the data that you
 will be clerically reviewing.
 
-CROW_pairwise should be used when making a simple match or non-match decision between 2 records.
+CROW_pairwise should be used when making a simple match or non-match decision
+between 2 records.
 
-CROW_clusters should be used when you have a group of records (these can be from a single or multiple data sources). This is useful when resolving conflicting links.
+CROW_clusters should be used when you have a group of records (these can be from
+a single or multiple data sources). This is useful when resolving conflicting
+links.
 
 > [!CAUTION]
 >
