@@ -22,7 +22,7 @@ Please get in contact using the below details if you have any questions:
 linkage.hub@ons.gov.uk
 
 We would like to acknowledge and thank David Cobbledick and Andrew Sutton for
-reviewing this code.
+reviewing this code..
 """
 
 import configparser
