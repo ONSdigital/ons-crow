@@ -146,6 +146,7 @@ email][email].
 [crow-new-issue]: https://github.com/Data-Linkage/Clerical_Resolution_Online_Widget/issues/new
 [email]: mailto:linkage.hub@ons.gov.uk
 [ide]: https://en.wikipedia.org/wiki/Integrated_development_environment
+[Instructions_Clerical_Coordinators_pairwise]: ./docs/Instructions_Clerical_Coordinators_pairwise.pdf
 [python-docs-venv]: https://docs.python.org/3/library/venv.html
 [wikipedia-cmd]: https://en.wikipedia.org/wiki/Cmd.exe
 [wikipedia-path]: https://en.wikipedia.org/wiki/PATH_(variable)
