@@ -313,6 +313,15 @@ class ClericalApp:
             command=lambda: self.go_back(),
         )
         self.back_button.grid(row=0, column=2, columnspan=1, padx=15, pady=10)
+      
+        self.select_all_button = tkinter.Button(
+                    self.button_frame,
+                    text="Select All",
+                    font=f"Helvetica {self.text_size}",
+                    command=self.select_all_checkboxes,
+                    bg="LightBlue1",
+        )
+        self.select_all_button.grid(row=0, column=3, columnspan=1, padx=15, pady=10)
 
         # disable back button if no previous clusters exist
         if self.cluster_index == 0 and self.current_num_cluster_decisions() == 0:
@@ -350,6 +359,17 @@ class ClericalApp:
                 self.comment_entry["values"] = (
                     config["custom_settings"]["comment_values"]
                 ).split(",")
+
+    def select_all_checkboxes(self):
+        """Select all row checkboxes for the current cluster that are enabled."""
+        for v, display_i in enumerate(self.display_indexes):
+            try:
+                state = eval(f"self.checkbutton{v}.cget('state')")
+                if state == tkinter.NORMAL:
+                    exec(f"self.check_{v}.set(1)")
+            except Exception:
+                # If a specific checkbox variable is not present, skip it
+                pass
 
     def draw_tool_frame(self):
         # Configure the grid so the record counter can move to the right
