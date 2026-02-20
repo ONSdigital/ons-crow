@@ -15,9 +15,13 @@ of CROW.
 - Python 3.9 or higher
 - `tkinter` (included with standard Python installations)
 - Additional dependencies listed in `requirements.txt`
+- The data to be matched in CSV format. Help with preparing the pairwise CSV can
+  be found in
+  [the pairwise instructions][Instructions_Clerical_Coordinators_pairwise]. Help
+  with preparing the clusters CSV can be found in
+  [the cluster instructions][Cluster_Version_Instructions].
 - **Optional**: An [IDE][ide] (e.g. Spyder, Visual Studio (VS) Code, PyCharm
   etc.)
-- The data to be matched in csv format. Help with preparing the pairwise csv can be found in part 7 of: version1_tkinter/docs/Instructions_Clerical_Coordinators_pairwise. Help with preparing the clusters csv can be found in: version1_tkinter/docs/Cluster_Version_Instructions
 
 > [!NOTE]
 >
