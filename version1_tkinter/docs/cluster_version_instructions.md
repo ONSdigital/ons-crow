@@ -15,7 +15,7 @@ follows;
 - There must be a record ID column. This must be unique for each record.
 Example 'long' file data format to be input to CROW:
 
-![image_0_Image23.png](images/image_0_Image23.png)
+![image_0_cvi.png](images/image_0_cvi.png)
 
 ## Setting Up the Config File (for project leads)
 In order to adapt the cluster version of CROW to your data, you will need to
@@ -44,24 +44,24 @@ When set to 1, a comment box is displayed as shown below that allows clerical
 matchers to enter comments that will be appended to the relevant clusters in the
 matched file. If set to 0, this is not displayed.
 
-![image_1_Image26.png](images/image_1_Image26.png)
+![image_1_cvi.png](images/image_1_cvi.png)
 
 #### comment_values
 Shows example dropdown options for the comment box that can be selected by
 clerical matchers. If left blank, no options are shown.
 
-![image_1_Image27.png](images/image_1_Image27.png)
+![image_2_cvi.png](images/image_2_cvi.png)
 
 ## Using the Cluster Version
 To use the Cluster Version of CROW; users can simply click play in their given
 Python editor. The below window will then pop-up.
 
-![image_1_Image28.png](images/image_1_Image28.png)
+![image_3_cvi.png](images/image_3_cvi.png)
 
 Clerical matchers can then choose the file they wish to match. After selecting a
 file the below window will pop-up.
 
-![image_2_Image31.png](images/image_2_Image31.png)
+![image_4_cvi.png](images/image_4_cvi.png)
 
 Users can then use the checkboxes on the left-hand side of the window to
 highlight records they wish to match, followed by clicking the 'Match' button.
@@ -81,7 +81,7 @@ previous cluster.
 ## The Output
 The output file will look something like this:
 
-![image_2_Image32.png](images/image_2_Image32.png)
+![image_5_cvi.png](images/image_5_cvi.png)
 
 A match column is appended to each row. If the given record has a match, the
 record for that record and all the matches will be stored in the 'Match' column
@@ -89,4 +89,4 @@ separated by a comma. If there are no matches to a given record 'No Matches In
 Cluster' is added to the 'Match' column. To get your outputs in a pairwise
 linked format (see image below) run the `CROW_cluster_output_updater.py` script.
 
-![image_3_Image35.png](images/image_3_Image35.png)
+![image_6_cvi.png](images/image_6_cvi.png)
