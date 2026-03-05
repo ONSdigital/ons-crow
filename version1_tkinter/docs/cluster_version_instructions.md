@@ -15,7 +15,7 @@ follows;
 - There must be a record ID column. This must be unique for each record.
 Example 'long' file data format to be input to CROW:
 
-![image_0_cvi.png](images/image_0_cvi.png)
+![0_long_input_data.png](images/0_long_input_data.png)
 
 ## Setting Up the Config File (for project leads)
 In order to adapt the cluster version of CROW to your data, you will need to
@@ -44,24 +44,24 @@ When set to 1, a comment box is displayed as shown below that allows clerical
 matchers to enter comments that will be appended to the relevant clusters in the
 matched file. If set to 0, this is not displayed.
 
-![image_1_cvi.png](images/image_1_cvi.png)
+![1_comment_box_typing.png](images/1_comment_box_typing.png)
 
 #### comment_values
 Shows example dropdown options for the comment box that can be selected by
 clerical matchers. If left blank, no options are shown.
 
-![image_2_cvi.png](images/image_2_cvi.png)
+![2_comment_box_dropdown.png](images/2_comment_box_dropdown.png)
 
 ## Using the Cluster Version
 To use the Cluster Version of CROW; users can simply click play in their given
 Python editor. The below window will then pop-up.
 
-![image_3_cvi.png](images/image_3_cvi.png)
+![3_intro_window.png](images/3_intro_window.png)
 
 Clerical matchers can then choose the file they wish to match. After selecting a
 file the below window will pop-up.
 
-![image_4_cvi.png](images/image_4_cvi.png)
+![4_cluster_main_window.png](images/4_cluster_main_window.png
 
 Users can then use the checkboxes on the left-hand side of the window to
 highlight records they wish to match, followed by clicking the 'Match' button.
@@ -91,11 +91,11 @@ linked format (see image below) run the `CROW_cluster_output_updater.py` script.
 
 ![An Excel sheet of CROW output in pairwise (wide) format.][cluster-output-updater-output]
 
-[cluster-main-window]: ./images/image_4_cvi.png
-[cluster-output]: ./images/image_5_cvi.png
-[cluster-output-updater-output]: ./images/image_6_cvi.png
-[comment-box-dropdown]: ./images/image_2_cvi.png
-[comment-box-typing]: ./images/image_1_cvi.png
-[intro-window]: ./images/image_3_cvi.png
-[long-input-data]: ./images/image_0_cvi.png
+[cluster-main-window]: ./images/4_cluster_main_window.png
+[cluster-output]: ./images/5_cluster_output.png
+[cluster-output-updater-output]: ./images/6_cluster_output_updater_output.png
+[comment-box-dropdown]: ./images/2_comment_box_dropdown.png
+[comment-box-typing]: ./images/1_comment_box_typing.png
+[intro-window]: ./images/3_intro_window.png
+[long-input-data]: ./images/0_long_input_data.png
 
