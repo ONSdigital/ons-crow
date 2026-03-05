@@ -3,6 +3,23 @@
 The Clerical Resolution Online Widget (CROW) is an open-source project designed
 to facilitate the clerical review of linked data.
 
+Clerical matching is the process of manually reviewing records, as part of the
+data linkage process.
+
+CROW is applicable for some but not all types of clerical matching work. CROW
+can be used to:
+
+1. Perform primary clerical matching in cases of uncertainty. It can be used to
+   make a decision on a candidate pair of records or a cluster of records
+   belonging to the same entity.
+2. Assess the quality of automatic linkage. It can be used to verify candidate
+   links and to check for false positives or false negatives. In both cases
+   candidate pairs or clusters need to be identified by either automatic
+   matching or by blocking, prior to the use of CROW.
+
+CROW cannot be used for clerical search. It cannot be used to look for matches
+within a large pool of data
+
 There are currently two types of CROW:
 
 - **CROW1** - a desktop application made with Tkinter.
