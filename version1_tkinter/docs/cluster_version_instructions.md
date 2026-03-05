@@ -81,7 +81,7 @@ previous cluster.
 ## The Output
 The output file will look something like this:
 
-![image_5_cvi.png](images/image_5_cvi.png)
+![An Excel sheet of CROW output.][cluster-output]
 
 A match column is appended to each row. If the given record has a match, the
 record for that record and all the matches will be stored in the 'Match' column
