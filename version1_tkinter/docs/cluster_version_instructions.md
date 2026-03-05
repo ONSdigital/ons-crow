@@ -79,6 +79,7 @@ been made in that cluster). Pressed again it will take the user back to the
 previous cluster.
 
 ## The Output
+
 The output file will look something like this:
 
 ![An Excel sheet of CROW output.][cluster-output]
