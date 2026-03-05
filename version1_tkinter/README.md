@@ -140,7 +140,8 @@ issues][crow-issues] or [open a new issue][crow-new-issue] according to the
 [contributing guidelines][crow-contributing], or [contact us directly via
 email][email].
 
-[Cluster_Version_Instructions]: ./docs/Cluster_Version_Instructions.md
+[clerical-coordinator-pairwise-instructions]: ./docs/Instructions_Clerical_Coordinators_pairwise.pdf
+[cluster-instructions]: ./docs/cluster_version_instructions.md
 [crow-contributing]: ../CONTRIBUTING.md
 [crow-issues]: https://github.com/Data-Linkage/Clerical_Resolution_Online_Widget/issues
 [crow-new-issue]: https://github.com/Data-Linkage/Clerical_Resolution_Online_Widget/issues/new
