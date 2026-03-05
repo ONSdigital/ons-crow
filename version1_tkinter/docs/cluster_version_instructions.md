@@ -36,7 +36,9 @@ titles for the variables you want to display.
 ### [cluster_id]
 Specify which column is your cluster ID column (MUST be the same as in your
 CSV).
+
 ### [record_id]
+
 Specify which column is your record ID column (MUST be the same as in your CSV).
 ### [custom_settings]
 There are a few optional custom settings that can be personalised for matching
