@@ -89,4 +89,13 @@ separated by a comma. If there are no matches to a given record 'No Matches In
 Cluster' is added to the 'Match' column. To get your outputs in a pairwise
 linked format (see image below) run the `CROW_cluster_output_updater.py` script.
 
-![image_6_cvi.png](images/image_6_cvi.png)
+![An Excel sheet of CROW output in pairwise (wide) format.][cluster-output-updater-output]
+
+[cluster-main-window]: ./images/image_4_cvi.png
+[cluster-output]: ./images/image_5_cvi.png
+[cluster-output-updater-output]: ./images/image_6_cvi.png
+[comment-box-dropdown]: ./images/image_2_cvi.png
+[comment-box-typing]: ./images/image_1_cvi.png
+[intro-window]: ./images/image_3_cvi.png
+[long-input-data]: ./images/image_0_cvi.png
+
