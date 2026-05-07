@@ -1,0 +1,23 @@
+{
+  "[markdown]": {
+    "editor.rulers": [80],
+    "editor.tabSize": 2
+  },
+
+  "[python]": {
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": "explicit"
+    },
+    "editor.defaultFormatter": "charliermarsh.ruff",
+    "editor.rulers": [72, 88],
+    "editor.tabSize": 4
+  },
+
+  "cSpell.language": "en,en-GB",
+
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnPaste": false,
+  "editor.formatOnSave": true,
+
+  "python.analysis.typeCheckingMode": "strict"
+}
