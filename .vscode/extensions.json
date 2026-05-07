@@ -6,7 +6,6 @@
     "davidanson.vscode-markdownlint",
     "esbenp.prettier-vscode",
     "ms-python.python",
-    "ms-python.vscode-pylance",
-    "dnut.rewrap-revived"
+    "ms-python.vscode-pylance"
   ]
 }
