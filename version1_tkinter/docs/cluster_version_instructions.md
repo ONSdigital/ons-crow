@@ -19,7 +19,7 @@ follows;
 
 Example 'long' file data format to be input to CROW:
 
-![0_long_input_data.png](images/0_long_input_data.png)
+![0_long_input_data.png]()
 
 ## Setting Up the Config File (for project leads)
 
@@ -112,3 +112,4 @@ linked format (see image below) run the `CROW_cluster_output_updater.py` script.
 
 [cluster-output]: ./images/5_cluster_output.png
 [cluster-output-updater-output]: ./images/6_cluster_output_updater_output.png
+[long-input-data]: ./images/0_long_input_data.png
