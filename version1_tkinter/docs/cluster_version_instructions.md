@@ -19,7 +19,7 @@ follows;
 
 Example 'long' file data format to be input to CROW:
 
-![0_long_input_data.png]()
+![long_input_data.png][long-input-data]
 
 ## Setting Up the Config File (for project leads)
 
@@ -60,26 +60,26 @@ When set to 1, a comment box is displayed as shown below that allows clerical
 matchers to enter comments that will be appended to the relevant clusters in the
 matched file. If set to 0, this is not displayed.
 
-![1_comment_box_typing.png](images/1_comment_box_typing.png)
+![comment_box_typing.png][comment-box-typing]
 
 #### comment_values
 
 Shows example dropdown options for the comment box that can be selected by
 clerical matchers. If left blank, no options are shown.
 
-![2_comment_box_dropdown.png](images/2_comment_box_dropdown.png)
+![comment_box_dropdown.png][comment-box-dropdown]
 
 ## Using the Cluster Version
 
 To use the Cluster Version of CROW; users can simply click play in their given
 Python editor. The below window will then pop-up.
 
-![3_intro_window.png](images/3_intro_window.png)
+![intro_window.png][intro-window]
 
 Clerical matchers can then choose the file they wish to match. After selecting a
 file the below window will pop-up.
 
-![4_cluster_main_window.png](images/4_cluster_main_window.png
+![cluster_main_window.png][cluster-main-window]
 
 Users can then use the checkboxes on the left-hand side of the window to
 highlight records they wish to match, followed by clicking the 'Match' button.
@@ -110,6 +110,10 @@ linked format (see image below) run the `CROW_cluster_output_updater.py` script.
 
 ![An Excel sheet of CROW output in pairwise (wide) format.][cluster-output-updater-output]
 
-[cluster-output]: ./images/5_cluster_output.png
-[cluster-output-updater-output]: ./images/6_cluster_output_updater_output.png
-[long-input-data]: ./images/0_long_input_data.png
+[cluster-main-window]: ./images/cluster_main_window.png
+[cluster-output]: ./images/cluster_output.png
+[cluster-output-updater-output]: ./images/cluster_output_updater_output.png
+[comment-box-dropdown]: ./images/comment_box_dropdown.png
+[comment-box-typing]: ./images/comment_box_typing.png
+[intro-window]: ./images/intro_window.png
+[long-input-data]: ./images/long_input_data.png
