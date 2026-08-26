@@ -15,6 +15,11 @@ of CROW.
 - Python 3.9 or higher
 - `tkinter` (included with standard Python installations)
 - Additional dependencies listed in `requirements.txt`
+- The data to be matched in CSV format. Help with preparing the pairwise CSV can
+  be found in [the pairwise
+  instructions][clerical-coordinator-pairwise-instructions]. Help with preparing
+  the clusters CSV can be found in [the cluster
+  instructions][cluster-instructions].
 - **Optional**: An [IDE][ide] (e.g. Spyder, Visual Studio (VS) Code, PyCharm
   etc.)
 
@@ -82,6 +87,13 @@ Before you begin, you will need to choose between the clusters and pairwise
 versions of CROW1. Your choice will depend on the format of the data that you
 will be clerically reviewing.
 
+CROW_pairwise should be used when making a simple match or non-match decision
+between 2 records.
+
+CROW_clusters should be used when you have a group of records (these can be from
+a single or multiple data sources). This is useful when resolving conflicting
+links.
+
 > [!CAUTION]
 >
 > Make sure your chosen script and its corresponding configuration file are in
@@ -128,6 +140,8 @@ issues][crow-issues] or [open a new issue][crow-new-issue] according to the
 [contributing guidelines][crow-contributing], or [contact us directly via
 email][email].
 
+[clerical-coordinator-pairwise-instructions]: ./docs/Instructions_Clerical_Coordinators_pairwise.pdf
+[cluster-instructions]: ./docs/cluster_version_instructions.md
 [crow-contributing]: ../CONTRIBUTING.md
 [crow-issues]: https://github.com/Data-Linkage/Clerical_Resolution_Online_Widget/issues
 [crow-new-issue]: https://github.com/Data-Linkage/Clerical_Resolution_Online_Widget/issues/new
