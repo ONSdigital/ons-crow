@@ -315,13 +315,13 @@ class ClericalApp:
         self.back_button.grid(row=0, column=2, columnspan=1, padx=15, pady=10)
       
         self.select_all_button = tkinter.Button(
-                    self.button_frame,
-                    text="Select All",
-                    font=f"Helvetica {self.text_size}",
-                    command=self.select_all_checkboxes,
-                    bg="LightBlue1",
+            self.button_frame,
+            text="Select All",
+            font=f"Helvetica {self.text_size}",
+            command=self.select_all_checkboxes,
+            bg="LightBlue1",
         )
-        self.select_all_button.grid(row=0, column=3, columnspan=1, padx=15, pady=10)
+        self.select_all_button.grid(row=0, column=3, padx=15, pady=10)
 
         # disable back button if no previous clusters exist
         if self.cluster_index == 0 and self.current_num_cluster_decisions() == 0:
