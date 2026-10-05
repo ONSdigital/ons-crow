@@ -314,6 +314,15 @@ class ClericalApp:
         )
         self.back_button.grid(row=0, column=2, columnspan=1, padx=15, pady=10)
 
+        self.select_all_button = tkinter.Button(
+            self.button_frame,
+            text="Select All",
+            font=f"Helvetica {self.text_size}",
+            command=self.select_all_checkboxes,
+            bg="LightBlue1",
+        )
+        self.select_all_button.grid(row=0, column=3, padx=15, pady=10)
+
         # disable back button if no previous clusters exist
         if self.cluster_index == 0 and self.current_num_cluster_decisions() == 0:
             self.back_button.config(state=tkinter.DISABLED)
@@ -794,6 +803,17 @@ class ClericalApp:
             self.matchdone.destroy()
         except AttributeError:
             pass
+
+    def select_all_checkboxes(self) -> None:
+        """Tick every enabled row checkbox for the current cluster.
+
+        Disabled checkboxes (rows where "Match" value is already
+        population) are left unchanged.
+        """
+        for i in range(len(self.display_indexes)):
+            checkbutton = getattr(self, f"checkbutton{i}")
+            if str(checkbutton.cget("state")) == tkinter.NORMAL:
+                checkbutton.select()
 
     def check_matching_done(self):
         """
