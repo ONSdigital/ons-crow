@@ -804,16 +804,16 @@ class ClericalApp:
         except AttributeError:
             pass
 
-    def select_all_checkboxes(self):
-        """Select all row checkboxes for the current cluster that are enabled."""
-        for v, display_i in enumerate(self.display_indexes):
-            try:
-                state = eval(f"self.checkbutton{v}.cget('state')")
-                if state == tkinter.NORMAL:
-                    exec(f"self.check_{v}.set(1)")
-            except Exception:
-                # If a specific checkbox variable is not present, skip it
-                pass
+    def select_all_checkboxes(self) -> None:
+        """Tick every enabled row checkbox for the current cluster.
+
+        Disabled checkboxes (rows where "Match" value is already
+        population) are left unchanged.
+        """
+        for i in range(len(self.display_indexes)):
+            checkbutton = getattr(self, f"checkbutton{i}")
+            if str(checkbutton.cget("state")) == tkinter.NORMAL:
+                checkbutton.select()
 
     def check_matching_done(self):
         """
