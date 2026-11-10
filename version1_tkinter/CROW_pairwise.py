@@ -190,7 +190,8 @@ class ClericalApp:
                     working_file[col_header].astype("string").fillna("")
                 )
 
-        # The object dtype allows the column to contain int, float, and str.
+        # The object dtype allows the column to contain an int, a float,
+        # and a string.
         working_file["Match"] = working_file["Match"].astype(object).fillna("")
 
         # count how many records are in the CM file
