@@ -167,46 +167,32 @@ class ClericalApp:
         # create protocol for if user presses the 'X' (top right)
         root.protocol("WM_DELETE_WINDOW", self.on_exit)
 
-        # create a match column if one doesn't exist
-        # replace any missing values (NA) with blank spaces
-        if {"Match"}.issubset(working_file.columns):
-            # convert all columns apart from Match and Comments (if specified) to string
-            for col_header in working_file.columns:
-                if col_header in ("Match", "Comments"):
-                    pass
-                else:
-                    # convert to string
-                    working_file[col_header] = working_file[col_header].astype(str)
-                    # remove nan values
-                    for i in range(len(working_file)):
-                        if working_file[col_header][i] == "nan":
-                            working_file.at[i, col_header] = ""
-
-            working_file.fillna("", inplace=True)
-
-            # variable indicates whether user has returned to this file or not
+        # Create the Match column if one does not already exist.
+        if "Match" in working_file.columns:
+            # The user has reopened a previously saved in-progress file.
             self.matching_previously_began = 1
         else:
             working_file["Match"] = ""
-            # Create the comment box column if column header is specified
-            if int(config["custom_settings"]["commentbox"]):
-                working_file["Comments"] = ""
-
-            # convert all columns apart from Match and Comments (if specified) to string
-            for col_header in working_file.columns:
-                if col_header in ("Match", "Comments"):
-                    pass
-                else:
-                    # convert to string
-                    working_file[col_header] = working_file[col_header].astype(str)
-                    # remove nan values
-                    for i in range(len(working_file)):
-                        if working_file[col_header][i] == "nan":
-                            working_file.at[i, col_header] = ""
-
-            working_file.fillna("", inplace=True)
-
             self.matching_previously_began = 0
+
+        # Only create the Comments column for a new file, so saved
+        # comments survive a reopen.
+        if (
+            int(config["custom_settings"]["commentbox"])
+            and "Comments" not in working_file.columns
+        ):
+            working_file["Comments"] = ""
+
+        for col_header in working_file.columns:
+            # Match is excluded because it holds numeric 1/0.
+            if col_header != "Match":
+                working_file[col_header] = (
+                    working_file[col_header].astype("string").fillna("")
+                )
+
+        # The object dtype allows the column to contain an int, a float,
+        # and a string.
+        working_file["Match"] = working_file["Match"].astype(object).fillna("")
 
         # count how many records are in the CM file
         self.num_records = len(working_file)

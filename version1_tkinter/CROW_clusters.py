@@ -192,20 +192,13 @@ class ClericalApp:
 
             self.matching_previously_began = 0
 
-        # convert all columns apart from Match and Comments (if specified) to string
+        # Match/Comments are included because a fully blank column in a
+        # saved file is read back as float NaN, which breaks the ""
+        # comparisons later.
         for col_header in working_file.columns:
-            if col_header in ("Match", "Comments"):
-                pass
-            else:
-                # convert to string
-                working_file[col_header] = working_file[col_header].astype(str)
-                # remove nan values
-                for i in range(len(working_file)):
-                    # should this be 'NaN' after casting to str?
-                    if working_file[col_header][i] == "nan":
-                        working_file.at[i, col_header] = ""
-
-        working_file.fillna("", inplace=True)
+            working_file[col_header] = (
+                working_file[col_header].astype("string").fillna("")
+            )
 
         # a counter of the number of checkpoint saves.
         self.checkpointcounter = 0
