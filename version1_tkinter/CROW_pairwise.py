@@ -167,33 +167,31 @@ class ClericalApp:
         # create protocol for if user presses the 'X' (top right)
         root.protocol("WM_DELETE_WINDOW", self.on_exit)
 
-        # Create the Match column if one does not already exist
-        if {"Match"}.issubset(working_file.columns):
-            # The user has reopened a previously saved in-progress file
+        # Create the Match column if one does not already exist.
+        if "Match" in working_file.columns:
+            # The user has reopened a previously saved in-progress file.
             self.matching_previously_began = 1
         else:
-            # The user has opened a new file
             working_file["Match"] = ""
+            self.matching_previously_began = 0
 
-        # Create the Comments column if the comment box is enabled
-        if int(config["custom_settings"]["commentbox"]):
+        # Only create the Comments column for a new file, so saved
+        # comments survive a reopen.
+        if (
+            int(config["custom_settings"]["commentbox"])
+            and "Comments" not in working_file.columns
+        ):
             working_file["Comments"] = ""
 
-        self.matching_previously_began = 0
-
-        # Convert all data columns, except Match and Comments, to strings
         for col_header in working_file.columns:
-            if col_header not in ("Match", "Comments"):
+            # Match is excluded because it holds numeric 1/0.
+            if col_header != "Match":
                 working_file[col_header] = (
                     working_file[col_header].astype("string").fillna("")
                 )
 
-        # Comments contains text, so ensure it is a string column
-        # before replacing its missing values with empty strings
-        if "Comments" in working_file.columns:
-            working_file["Comments"] = (
-                working_file["Comments"].astype("string").fillna("")
-            )
+        # The object dtype allows the column to contain int, float, and str.
+        working_file["Match"] = working_file["Match"].astype(object).fillna("")
 
         # count how many records are in the CM file
         self.num_records = len(working_file)
