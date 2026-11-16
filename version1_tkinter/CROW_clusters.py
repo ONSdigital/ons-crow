@@ -535,14 +535,14 @@ class ClericalApp:
                 exec(f"self.checkbutton{v}.deselect()")
                 exec(f"self.checkbutton{v}.grid(row={row_num}, column=0)")
 
-                exec(
-                    f"rf_separator{v}=ttk.Separator(self.record_frame, orient='horizontal')"
-                )
-                exec(
-                    f"rf_separator{v}.grid(row={sep_row}, column=0,\
-                                            columnspan={num_match_cols}+1, sticky='ns',\
-                                            ipadx=80*({num_match_cols + 1})*{text_size_multiplier},\
-                                            ipady=1)"
+                row_separator = ttk.Separator(self.record_frame, orient="horizontal")
+                row_separator.grid(
+                    row=sep_row,
+                    column=0,
+                    columnspan=num_match_cols + 1,
+                    sticky="ns",
+                    ipadx=80 * (num_match_cols + 1) * text_size_multiplier,
+                    ipady=1,
                 )
 
                 if col_header[0] not in self.columns_to_compare:

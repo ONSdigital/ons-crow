@@ -712,21 +712,18 @@ class ClericalApp:
                 "Maching Finished Press save and close or use the back button to return to the previous record",
             )
 
-    def update_df(self, match_res):
-        """
-        Updates the dataframe with the matching outcome. 1 == Match, 0 == Non-match
+    def update_df(self, match_res: int) -> None:
+        """Update the DataFrame with the matching outcome.
+
+        1 == Match, 0 == Non-match.
+
         Parameters
         ----------
-        match_res : int - boolean.
-            Adds a 1 or a 0 in the column
-        Returns
-        -------
-        None.
+        match_res
+            Adds a 1 or a 0 in the column (stored as the string "1" or
+            "0", as the Match column holds strings).
         """
-
-        # update df
-        working_file.at[self.record_index, "Match"] = match_res
-
+        working_file.at[self.record_index, "Match"] = str(match_res)
         if int(config["custom_settings"]["commentbox"]):
             working_file.at[self.record_index, "Comments"] = self.comment_entry.get()
 
