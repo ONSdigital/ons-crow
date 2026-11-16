@@ -36,6 +36,27 @@ import numpy as np
 import pandas as pd
 
 
+def first_blank_index(df: pd.DataFrame, column: str) -> int | None:
+    """Find the index of the first row where a column is blank.
+
+    Parameters
+    ----------
+    df
+        The data to search. Blank values must be empty strings.
+    column
+        The name of the column to check for blank values.
+
+    Returns
+    -------
+    The index of the first row whose specified column is blank, or
+    ``None`` if no row is blank.
+    """
+    blanks: list[int] = df.index[df[column] == ""].tolist()
+    if len(blanks) == 0:
+        return None
+    return blanks[0]
+
+
 class IntroWindow:
     """
     intro_window class function - opens a window that prompts the user to
@@ -181,31 +202,11 @@ class ClericalApp:
         # create protocol for if user presses the 'X' (top right)
         root.protocol("WM_DELETE_WINDOW", self.on_exit)
 
-        # if match column exists in clerical file
-        if {"Match"}.issubset(working_file.columns):
-            # variable indicates whether user has returned to this file (1) or not (0)
+        if "Match" in working_file.columns:
             self.matching_previously_began = 1
-
         else:
-            # create a match column and fill with blanks
             working_file["Match"] = ""
-
             self.matching_previously_began = 0
-
-        # convert all columns apart from Match and Comments (if specified) to string
-        for col_header in working_file.columns:
-            if col_header in ("Match", "Comments"):
-                pass
-            else:
-                # convert to string
-                working_file[col_header] = working_file[col_header].astype(str)
-                # remove nan values
-                for i in range(len(working_file)):
-                    # should this be 'NaN' after casting to str?
-                    if working_file[col_header][i] == "nan":
-                        working_file.at[i, col_header] = ""
-
-        working_file.fillna("", inplace=True)
 
         # a counter of the number of checkpoint saves.
         self.checkpointcounter = 0
@@ -276,15 +277,19 @@ class ClericalApp:
         bottom = max(y2, canvas_height)
         self.canvas.configure(scrollregion=(x1, y1, x2, bottom))
 
-    def get_starting_cluster_id(self):
+    def get_starting_cluster_id(self) -> int | None:
+        """Find the cluster to display when the app opens.
+
+        Returns
+        -------
+        The ``cluster_sequential_number`` of the first record with a
+        blank ``Match`` value, or ``None`` if every record has a
+        decision.
         """
-        returns the cluster id of the first cluster that does not have a value in the match field.
-        """
-        for i in working_file.index:
-            if working_file.loc[i, "Match"] == "":
-                return working_file.loc[i, "cluster_sequential_number"]
-            else:
-                pass
+        first_blank = first_blank_index(working_file, "Match")
+        if first_blank is None:
+            return None
+        return int(working_file.loc[first_blank, "cluster_sequential_number"])
 
     def draw_button_frame(self):
         # =====  button_frame - for match/non-match/back buttons
@@ -1200,13 +1205,14 @@ if __name__ == "__main__":
             message="This clerical sample is open in another program. Please close this and restart CROW."
         )
 
-    # ---- load in the required csv file as a pandas dataframe (can also do this for excel docs...)
     try:
-        working_file = pd.read_csv(renamed_file)
-
-    except FileNotFoundError or NameError:
+        # Read everything as strings so integer columns containing
+        # blanks (e.g. a year) are not turned into floats like "2019.0".
+        working_file = pd.read_csv(renamed_file, dtype=str, keep_default_na=False)
+    except (FileNotFoundError, NameError):
         sys.exit(
-            "\n\nThis clerical sample is open in another program. Please close this and restart CROW."
+            "\n\nThis clerical sample is open in another program. Please close this and"
+            "restart CROW."
         )
 
     # data validation step
