@@ -220,11 +220,14 @@ class ClericalApp:
         # list of cluster numbers over which to iterate
         clusters_to_iterate = list(working_file["cluster_sequential_number"].unique())
 
-        # counter variable for iterating through the CM file
-        # For multiple records version use cluster ids
-
-        # get the starting cluster id:
-        self.cluster_index = self.get_starting_cluster_id()
+        # Start at the cluster of the first record without a match
+        # decision.
+        first_blank = first_blank_index(working_file, "Match")
+        self.cluster_index = (
+            None
+            if first_blank is None
+            else int(working_file.loc[first_blank, "cluster_sequential_number"])
+        )
 
         # create a variable to indicate the lumber of cluster id's
         self.num_clusters = len(clusters_to_iterate)
@@ -276,20 +279,6 @@ class ClericalApp:
         canvas_height = self.canvas.winfo_height()
         bottom = max(y2, canvas_height)
         self.canvas.configure(scrollregion=(x1, y1, x2, bottom))
-
-    def get_starting_cluster_id(self) -> int | None:
-        """Find the cluster to display when the app opens.
-
-        Returns
-        -------
-        The ``cluster_sequential_number`` of the first record with a
-        blank ``Match`` value, or ``None`` if every record has a
-        decision.
-        """
-        first_blank = first_blank_index(working_file, "Match")
-        if first_blank is None:
-            return None
-        return int(working_file.loc[first_blank, "cluster_sequential_number"])
 
     def draw_button_frame(self):
         # =====  button_frame - for match/non-match/back buttons

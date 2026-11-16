@@ -203,6 +203,7 @@ class ClericalApp:
         # a counter of the number of checkpoint saves.
         self.checkpointcounter = 0
 
+        # Start at the first record pair without a match decision.
         first_blank = first_blank_index(working_file, "Match")
         self.record_index = self.num_records - 1 if first_blank is None else first_blank
 
