@@ -24,7 +24,26 @@ from tkinter import filedialog, ttk
 
 import pandas as pd
 
-########## Intro GUI
+
+def first_blank_index(df: pd.DataFrame, column: str) -> int | None:
+    """Find the index of the first row where a column is blank.
+
+    Parameters
+    ----------
+    df
+        The data to search. Blank values must be empty strings.
+    column
+        The name of the column to check for blank values.
+
+    Returns
+    -------
+    The index of the first row whose specified column is blank, or
+    ``None`` if no row is blank.
+    """
+    blanks: list[int] = df.index[df[column] == ""].tolist()
+    if len(blanks) == 0:
+        return None
+    return blanks[0]
 
 
 class IntroWindow:
@@ -169,42 +188,12 @@ class ClericalApp:
 
         # create a match column if one doesn't exist
         # replace any missing values (NA) with blank spaces
-        if {"Match"}.issubset(working_file.columns):
-            # convert all columns apart from Match and Comments (if specified) to string
-            for col_header in working_file.columns:
-                if col_header in ("Match", "Comments"):
-                    pass
-                else:
-                    # convert to string
-                    working_file[col_header] = working_file[col_header].astype(str)
-                    # remove nan values
-                    for i in range(len(working_file)):
-                        if working_file[col_header][i] == "nan":
-                            working_file.at[i, col_header] = ""
-
-            working_file.fillna("", inplace=True)
-
-            # variable indicates whether user has returned to this file or not
+        if "Match" in working_file.columns:
             self.matching_previously_began = 1
         else:
             working_file["Match"] = ""
-            # Create the comment box column if column header is specified
             if int(config["custom_settings"]["commentbox"]):
                 working_file["Comments"] = ""
-
-            # convert all columns apart from Match and Comments (if specified) to string
-            for col_header in working_file.columns:
-                if col_header in ("Match", "Comments"):
-                    pass
-                else:
-                    # convert to string
-                    working_file[col_header] = working_file[col_header].astype(str)
-                    # remove nan values
-                    for i in range(len(working_file)):
-                        if working_file[col_header][i] == "nan":
-                            working_file.at[i, col_header] = ""
-
-            working_file.fillna("", inplace=True)
 
             self.matching_previously_began = 0
 
@@ -214,9 +203,9 @@ class ClericalApp:
         # a counter of the number of checkpoint saves.
         self.checkpointcounter = 0
 
-        # initiate start record_index so that it will go from latest record
-        # counter variable for iterating through the CM file
-        self.record_index = self.get_starting_index()
+        # Start at the first record pair without a match decision.
+        first_blank = first_blank_index(working_file, "Match")
+        self.record_index = self.num_records - 1 if first_blank is None else first_blank
 
         self.records_per_checkpoint = int(
             config["custom_settings"]["num_records_checkpoint"]
@@ -674,45 +663,6 @@ class ClericalApp:
 
         self.update_gui()
 
-    def get_starting_index(self):
-        """
-        This function finds the first row in column index [-1] that has a value not equal to zero or 1
-        and returns the index number
-
-        Parameters
-        ----------
-        None
-
-        Returns
-        -------
-        i : int
-            index number that relates to the next record to be matched
-
-        """
-        # get a list of index_values
-        index_values = list(range(0, len(working_file)))
-
-        # cycle through the working_file dataset to determine the next avaliable record
-
-        # Choose which one to cycle through
-        if int(config["custom_settings"]["commentbox"]):
-            for i in index_values:
-                if working_file.iloc[i, -2] != 1 and working_file.iloc[i, -2] != 0:
-                    return i
-                elif i == self.num_records - 1:
-                    return i
-                elif working_file.iloc[i, -2] == 1 or working_file.iloc[i, -2] == 0:
-                    pass
-
-        else:
-            for i in index_values:
-                if working_file.iloc[i, -1] != 1 and working_file.iloc[i, -1] != 0:
-                    return i
-                elif i == self.num_records - 1:
-                    return i
-                elif working_file.iloc[i, -1] == 1 or working_file.iloc[i, -1] == 0:
-                    pass
-
     def update_gui(self):
         """
         A simple function that updates the different GUI labels based on the
@@ -762,21 +712,18 @@ class ClericalApp:
                 "Maching Finished Press save and close or use the back button to return to the previous record",
             )
 
-    def update_df(self, match_res):
-        """
-        Updates the dataframe with the matching outcome. 1 == Match, 0 == Non-match
+    def update_df(self, match_res: int) -> None:
+        """Update the DataFrame with the matching outcome.
+
+        1 == Match, 0 == Non-match.
+
         Parameters
         ----------
-        match_res : int - boolean.
-            Adds a 1 or a 0 in the column
-        Returns
-        -------
-        None.
+        match_res
+            Adds a 1 or a 0 in the column (stored as the string "1" or
+            "0", as the Match column holds strings).
         """
-
-        # update df
-        working_file.at[self.record_index, "Match"] = match_res
-
+        working_file.at[self.record_index, "Match"] = str(match_res)
         if int(config["custom_settings"]["commentbox"]):
             working_file.at[self.record_index, "Comments"] = self.comment_entry.get()
 
@@ -1060,8 +1007,9 @@ if __name__ == "__main__":
         # create the filepath name for when the file is finished
         filepath_done = f"{'/'.join(renamed_file.split('/')[:-1])}/{renamed_file.split('/')[-1][0:-15]}_DONE.{renamed_file.split('/')[-1].split('.')[-1]}"
 
-    # ---- load in the required csv file as a pandas dataframe (can also do this for excel docs...)
-    working_file = pd.read_csv(renamed_file)
+    # Read everything as strings so integer columns containing blanks
+    # (e.g. a year) are not turned into floats like "2019.0"
+    working_file = pd.read_csv(renamed_file, dtype=str, keep_default_na=False)
 
     # END OF STEP 2
 
